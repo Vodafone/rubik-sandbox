@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mypod
+  name: mypod
+  namespace: otel-tests
+spec:
+  containers:
+  - image: alpine:latest
+    name: mypod
+    resources:
+      requests:
+        cpu: "2"
+      limits:
+        cpu: "2"
+    # Just spin & wait forever
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
